@@ -75,16 +75,50 @@ const projects = [
 
 
 
+
 const certificates = [
-  ["The Complete Oracle SQL Bootcamp", "Udemy · 2025"],
-  ["n8n Level 1", "n8n"],
-  ["n8n Level 2", "n8n"],
-  ["Claude Platform 101", "Anthropic"],
-  ["Model Context Protocol", "Anthropic"],
-  ["Advanced Model Context Protocol", "Anthropic"],
-  ["AI Fluency for Students", "Anthropic"],
-  ["AI Fluency for Educators", "Anthropic"],
+  {
+    name: "The Complete Oracle SQL Bootcamp",
+    issuer: "Udemy · 2025",
+    link: "https://lnkd.in/p/dwQXFggj",
+  },
+  {
+    name: "n8n Level 1",
+    issuer: "n8n",
+    link: "https://lnkd.in/p/dgPr9Xvd",
+  },
+  {
+    name: "n8n Level 2",
+    issuer: "n8n",
+    link: "https://lnkd.in/p/dhpX3Fq3",
+  },
+  {
+    name: "Claude Platform 101",
+    issuer: "Anthropic",
+    link: "https://lnkd.in/p/dfRN6mTQ",
+  },
+  {
+    name: "Model Context Protocol",
+    issuer: "Anthropic",
+    link: "https://lnkd.in/p/dzvHSKj2",
+  },
+  {
+    name: "Advanced Model Context Protocol",
+    issuer: "Anthropic",
+    link: "https://lnkd.in/p/dzvHSKj2",
+  },
+  {
+    name: "AI Fluency for Students",
+    issuer: "Anthropic",
+    link: "https://lnkd.in/p/dmQnRFpd",
+  },
+  {
+    name: "AI Fluency for Educators",
+    issuer: "Anthropic",
+    link: "https://lnkd.in/p/d9QEc-Mg",
+  },
 ];
+
 
 const services = [
   { icon: BarChart3, title: "Power BI Dashboards", text: "Clear, useful dashboards that help teams explore performance and make informed decisions." },
@@ -315,7 +349,28 @@ export default function Home() {
       <section className="section-wrap content-section" id="certifications">
         <SectionHeading eyebrow="05 / CONTINUOUS LEARNING" title={<>Learning is part<br/><span className="muted-heading">of the work.</span></>} detail="Courses and certifications that support my ongoing development. Certificate links can be attached to each item." />
         <div className="cert-grid">
-          {certificates.map(([title, issuer], i) => <div className="cert-item" key={title}><span className="cert-number">{String(i+1).padStart(2,"0")}</span><div><h3>{title}</h3><p>{issuer}</p></div><ArrowUpRight size={16}/></div>)}
+
+{certificates.map((cert, i) => (
+  <a
+    className="cert-item"
+    key={cert.name}
+    href={cert.link}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <span className="cert-number">
+      {String(i + 1).padStart(2, "0")}
+    </span>
+
+    <div className="cert-details">
+      <h3>{cert.name}</h3>
+      <p>{cert.issuer}</p>
+      <span className="cert-view">View Certificate ↗</span>
+    </div>
+
+    <ArrowUpRight size={18} />
+  </a>
+))}
         </div>
       </section>
 

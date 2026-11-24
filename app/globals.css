@@ -175,3 +175,32 @@ main{position:relative;isolation:isolate;overflow:hidden}
 .project-card-wrapper {
   display: contents;
 }
+
+.cert-item {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cert-item:hover {
+  transform: translateX(5px);
+}
+
+.cert-details {
+  flex: 1;
+}
+
+.cert-view {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #60a5fa;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cert-item:hover .cert-view {
+  opacity: 1;
+}
