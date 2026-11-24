@@ -77,9 +77,11 @@ const reveal = {
 function SectionHeading({
   eyebrow,
   title,
+  detail,
 }: {
   eyebrow: string;
   title: ReactNode;
+  detail?: string;
 }) {
   return (
     <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} className="section-heading">
