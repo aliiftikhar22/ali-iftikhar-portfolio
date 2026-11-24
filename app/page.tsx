@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 "use client";
 
 import { FormEvent, useState } from "react";
@@ -73,7 +74,13 @@ const reveal = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
 };
 
-function SectionHeading({ eyebrow, title, detail }: { eyebrow: string; title: string; detail?: string }) {
+function SectionHeading({
+  eyebrow,
+  title,
+}: {
+  eyebrow: string;
+  title: ReactNode;
+}) {
   return (
     <motion.div variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} className="section-heading">
       <span className="eyebrow"><span className="eyebrow-dot" />{eyebrow}</span>
