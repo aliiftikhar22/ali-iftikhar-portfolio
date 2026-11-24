@@ -10,7 +10,7 @@ import {
   CheckCircle2, Send, Layers3, Terminal, ChartNoAxesCombined
 } from "lucide-react";
 
-const EMAIL = "eamil.muhammadaliiftikhar2732@gmail.com";
+const EMAIL = "muhammadaliiftikhar2732@gmail.com";
 const LINKEDIN = "https://www.linkedin.com/in/muhammadaliiftikhar/";
 const GITHUB = "https://github.com/aliiftikhar22";
 
