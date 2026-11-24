@@ -10,7 +10,7 @@ import {
   CheckCircle2, Send, Layers3, Terminal, ChartNoAxesCombined
 } from "lucide-react";
 
-const EMAIL = "amil.muhammadaliiftikhar2732@gmail.com";
+const EMAIL = "eamil.muhammadaliiftikhar2732@gmail.com";
 const LINKEDIN = "https://www.linkedin.com/in/muhammadaliiftikhar/";
 const GITHUB = "https://github.com/aliiftikhar22";
 
@@ -20,36 +20,60 @@ const skills = [
   { title: "E-commerce", icon: ShoppingBag, items: ["Shopify", "Dawn Theme", "Theme Customization", "Store Setup", "Product Management"] },
 ];
 
+
+
 const projects = [
   {
-    number: "01", name: "Sitara Electronics", type: "E-COMMERCE / BUSINESS",
+    number: "01",
+    name: "Sitara Electronics",
+    type: "E-COMMERCE / BUSINESS",
     description: "An electronics retail experience focused on product discovery, store operations, and a practical digital shopping journey.",
     tags: ["E-commerce", "Web Development", "Business"],
-    icon: ShoppingBag, className: "project-blue",
-    note: "Business website project"
+    icon: ShoppingBag,
+    className: "project-blue",
+    note: "Business website project",
+    image: "/projects/sitara-electronics.png",
+    link: "https://sitaraelectronics.com",
   },
   {
-    number: "02", name: "Maison Alvaro", type: "SHOPIFY / LUXURY BRAND",
+    number: "02",
+    name: "Maison Alvaro",
+    type: "SHOPIFY / LUXURY BRAND",
     description: "A luxury fragrance storefront with a refined visual direction, Shopify Dawn customization, and editorial product presentation.",
     tags: ["Shopify", "Dawn Theme", "Brand Experience"],
-    icon: Layers3, className: "project-violet",
-    note: "Shopify store project"
+    icon: Layers3,
+    className: "project-violet",
+    note: "Shopify store project",
+    image: "/projects/maison-alvaro.png",
+    link: "https://maisonalvaroo.myshopify.com/",
   },
   {
-    number: "03", name: "Sitara Sales Dashboard", type: "POWER BI / BUSINESS INTELLIGENCE",
+    number: "03",
+    name: "Sitara Sales Dashboard",
+    type: "POWER BI / BUSINESS INTELLIGENCE",
     description: "A business intelligence concept for exploring sales performance, product movement, revenue patterns, and operational insights.",
     tags: ["Power BI", "Data Modeling", "Analytics"],
-    icon: ChartNoAxesCombined, className: "project-cyan",
-    note: "Analytics dashboard project"
+    icon: ChartNoAxesCombined,
+    className: "project-cyan",
+    note: "Analytics dashboard project",
+    image: "/projects/sitara-dashboard.png",
   },
   {
-    number: "04", name: "Data Analytics Lab", type: "SQL / EXCEL / PYTHON",
+    number: "04",
+    name: "Data Analytics Lab",
+    type: "SQL / EXCEL / PYTHON",
     description: "A growing collection of analytical exercises and reporting work focused on transforming structured data into useful information.",
-    tags: ["SQL", "Excel", "Python"],
-    icon: Database, className: "project-green",
-    note: "Learning and practice portfolio"
+    tags: ["SQL", "Excel", "Python", "Looker Studio"],
+    icon: Database,
+    className: "project-green",
+    note: "Learning and practice portfolio",
+    image: "/projects/data-analytics.png",
+    link: "https://datastudio.google.com/reporting/0ec28478-a691-4e37-8f67-169a91f74e4e/page/p_qqerqdj0vd",
   },
 ];
+
+
+
 
 const certificates = [
   ["The Complete Oracle SQL Bootcamp", "Udemy · 2025"],
@@ -212,18 +236,69 @@ export default function Home() {
       <section className="section-wrap content-section projects-section" id="projects">
         <SectionHeading eyebrow="03 / SELECTED WORK" title={<>Projects with a<br/><span className="muted-heading">purpose.</span></>} detail="A selection of business, e-commerce, and analytics work. Project details can be expanded as each case study is finalized." />
         <div className="projects-grid">
-          {projects.map((project, i) => {
-            const Icon = project.icon;
-            return <motion.article key={project.number} className={`project-card ${project.className}`} variants={reveal} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-              <div className="project-art">
-                <div className="project-art-grid" />
-                <div className="project-art-label"><span>PROJECT / {project.number}</span><span>CASE STUDY</span></div>
-                <div className="project-art-icon"><Icon size={48} strokeWidth={1.1}/></div>
-                <div className="project-art-bottom"><span>{project.note}</span><ArrowUpRight size={18}/></div>
-              </div>
-              <div className="project-info"><span className="project-type">{project.type}</span><h3>{project.name}</h3><p>{project.description}</p><div className="project-tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div></div>
-            </motion.article>;
-          })}
+          
+{projects.map((project, i) => {
+  const Icon = project.icon;
+
+  const card = (
+    <motion.article
+      className={`project-card ${project.className}`}
+      variants={reveal}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      <div className="project-art">
+        <img
+          src={project.image}
+          alt={`${project.name} project preview`}
+          className="project-image"
+        />
+
+        <div className="project-art-grid" />
+
+        <div className="project-art-label">
+          <span>PROJECT / {project.number}</span>
+          <span>CASE STUDY</span>
+        </div>
+
+        <div className="project-art-bottom">
+          <span>{project.note}</span>
+          {project.link && <ArrowUpRight size={18} />}
+        </div>
+      </div>
+
+      <div className="project-info">
+        <span className="project-type">{project.type}</span>
+        <h3>{project.name}</h3>
+        <p>{project.description}</p>
+
+        <div className="project-tags">
+          {project.tags.map(tag => (
+            <span key={tag}>{tag}</span>
+          ))}
+        </div>
+      </div>
+    </motion.article>
+  );
+
+  return project.link ? (
+    <a
+      key={project.number}
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="project-card-link"
+    >
+      {card}
+    </a>
+  ) : (
+    <div key={project.number} className="project-card-wrapper">
+  {card}
+</div>
+  );
+})}
+
         </div>
         <p className="project-footnote"><span className="footnote-dot"/> Selected work descriptions are intentionally high-level. Live demos and repositories can be added when their public links are ready.</p>
       </section>
